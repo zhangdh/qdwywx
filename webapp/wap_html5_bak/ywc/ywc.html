@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1.0">
+    <title>已完成</title>
+    
+     <link rel="stylesheet" href="../resources/sm.min.css">
+    
+    <script type='text/javascript' src='../sui/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../sui/sm.min.js' charset='utf-8'></script>
+    
+	<script type="text/javascript" src="../js/config.js"></script>
+	<script type="text/javascript" src="../js/ccoffice.js"></script>
+	<script type="text/javascript" src="ywc.js"></script>
+	<link rel="stylesheet" type="text/css" href="../resources/wap.css" />    
+	
+	<link rel="stylesheet" type="text/css" href="../resources/jquery-ui.theme.min.css" />
+  	
+  	<title></title>
+  </head>
+  <body >
+	<div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav" style="background-color:#64A2F5">
+                <a class="icon icon-left pull-left  pull-self" onclick="sys_goUrl('../main.html')"></a>
+                <a class="icon icon-refresh pull-right  pull-self" onclick="queryTodo(1)"></a>
+                <h1 class="title" style="font-size:24px; color:#FFF;font-weight:bold;">完成工单</h1>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content-self content"  id="div_grid_page">
+            	<div class="list-block" style="margin:0 0;">
+            		<input id="page" value="1" hidden></input>
+            		<input id="total" value="0" hidden></input>
+                	<div class="list-block" id="div_grid">
+	             
+	          		</div>
+	          	</div>
+	          	<!-- 加载提示符 -->
+		        <div class="infinite-scroll-preloader">
+		        	<div class="preloader"></div>
+		        </div>
+            </div>
+            <nav class="bar bar-tab">
+				 <a class="tab-item external" href="#" onclick="sys_goUrl('../main.html')">
+				   <span class="icon icon-home"></span>
+				   <span class="tab-label">主页</span>
+				 </a>
+				 <a class="tab-item external" href="#" onclick="sys_goUrl('../me/me.html')">
+				   <span class="icon icon-me"></span>
+				   <span class="tab-label">我的</span>
+				 </a>
+				 <a class="tab-item external" href="#" onclick="logout('../login.html')">
+				   <span class="icon icon-remove"></span>
+				   <span class="tab-label">退出</span>
+				 </a>
+			  </nav>
+            <div id="div_grid_templet" style="display:none">	  
+		  	 	<div class="dcl_item" >
+					<div class="c_item_header">
+						<img src="../resources/icons/15.png" />&nbsp;&nbsp;
+						<span>编号:{service_number}</span>
+					</div>
+					<div class="c_item_content">
+						<img src="../resources/icons/10.png" />&nbsp;&nbsp;
+						姓名:{caller_name}<br/>
+						<img src="../resources/icons/5.png" />&nbsp;&nbsp;
+						联系电话:{contact_num} &nbsp;&nbsp;  <span class="icon icon-phone" onclick="dial('{contact_num}')"></span><br/>
+						<img src="../resources/icons/6.png" />&nbsp;&nbsp;
+						报修地址:{repair_address}<br/>
+						<img src="../resources/icons/2.png" />&nbsp;&nbsp;
+						报修内容:{service_content}<br>
+						<img src="../resources/icons/3.png" />&nbsp;&nbsp;
+						来电时间:{create_time}<br>
+					</div>
+					<div class="c_item_footer">
+						 <a href="#" onclick="show('{guid}')" class="button">查看</a>
+					</div>  		 
+			  </div>
+			  
+			  	
+			
+		    </div>
+        </div>
+    </div>
+  </body>
+</html>

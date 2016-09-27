@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1.0">
+    <title>待维修</title>
+   
+    <link rel="stylesheet" href="../resources/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/wap.css" />
+  </head>
+  <body >
+  	<div class="page-group">
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav" style="background-color:#64A2F5">
+                 <a class="icon icon-left pull-left pull-self" onclick="sys_goUrl('db.html')"></a>
+                <a class="icon icon-home pull-right pull-self" onclick="sys_goUrl('../main.html')"></a>
+                <h1 class="title" style="font-size:24px; color:#FFF;font-weight:bold;">详情</h1>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content">
+	             <div id="div_show">
+			  		<input type=hidden id="guid">
+			  		<input type=hidden id="sign_guid">
+			  		<input type=hidden id="sign_status">
+			   		<span  class="show_title">客户名称：</span><span id="caller_name"></span><br/>
+			   		<span  class="show_title">客户电话：</span><span id="contact_num"></span>&nbsp;&nbsp;<span class="icon icon-phone" onclick="dial()"></span><br/>
+					<span  class="show_title">客户地址：</span><span id="repair_address"></span><br/>
+					<span  class="show_title">维修内容：</span><span id="service_content"></span><br/>
+					<span  class="show_title">预约时间：</span><span id="reservation_time"></span><br/>
+					<span  class="show_title">督办状态：</span><span id="supervision_name"></span><br/>
+					<span  class="show_title">督办内容：</span><span id="supervision_content"></span><br/>
+					
+					<span  class="show_title">当前状态：</span><span id="state_name"></span><br/>
+					
+				</div>
+				
+				<p class="buttons-row">
+				 	<a href="#"  class="button create-actions">上传报价图片</a>
+				 	<a href="#"  class="button create-actions">上传现场图片</a> 
+					<a href="#" onclick="sign()" class="button">上门服务</a>
+				 </p>
+				 <a href="#" onclick="deal()" class="button">工单回复</a>
+				 
+				 <nav class="bar bar-tab">
+				  	<a class="tab-item external" href="#" onclick="sys_goUrl('../main.html')">
+				    	<span class="icon icon-home"></span>
+				    	<span class="tab-label">主页</span>
+				  	</a>
+				  	<a class="tab-item external" href="#" onclick="sys_goUrl('../me/me.html')">
+				   		<span class="icon icon-me"></span>
+				    	<span class="tab-label">我的</span>
+				  	</a>
+				  	<a class="tab-item external" href="#" onclick="logout('../login.html')">
+				    	<span class="icon icon-remove"></span>
+				    	<span class="tab-label">退出</span>
+				  	</a>
+				 </nav>	
+			</div>
+			
+			<div class="popup popup-back popup-self" style="height:250px;">
+		      <div class="popup_header">是否确认回退?</div>
+			  <div class="content-block" style="opacity:0.9;">
+					<textarea rows=3 id="back_content" name="back_content" style="width:100%"  placeholder="请填写回退原因"></textarea>
+					<p class="buttons-row">
+						<a href="#" class="button " onclick="saveBack()">确认回退</a>
+						<a href="#" class="button close-popup">取消</a>
+					</p>
+			  </div>
+			</div>
+			
+			<div class="popup popup-sign popup-self">
+		      <div class="popup_header" id="sign_header">签到/签退</div>
+			  <div  style="opacity:0.9;">
+			  	<div style="top:20px;">
+			  		<table style="width:100%">
+			  			<tr>
+			  				<td style="width:40%;text-align:right;">当前时间：</td>
+			  				<td style="width:60%;text-align:left;"><span id="curtime"></span><br/></td>
+			  			</tr>
+			  			<tr>
+			  				<td style="width:40%;text-align:right;">当前位置：</td>
+			  				<td style="width:60%;text-align:left;"><span id="points"></span><br/></td>
+			  			</tr>
+			  		</table>
+			  	</div>
+				<p class="buttons-row">
+					<a href="#" class="button " onclick="signIn()">签到</a>
+					<a href="#" class="button " onclick="signOut()">签退</a>
+					<a href="#" class="button close-popup">关闭</a>
+				</p>
+				<table style="width:100%" id="sign_list">
+					
+				</table>
+			  </div>
+			</div>
+			
+			<div  style="display:none">
+				<table id="sign_template">
+					<tr style="width:100%">
+						<td style="width:15%;align:right">签到：</td>
+				  		<td style="width:35%;">{sign_start}</td>
+				  		<td style="width:15%;align:right">签退：</td>
+				  		<td style="width:35%;">{sign_end}</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="popup popup-deal popup-self" style="height:320px;">
+		      <div class="popup_header">请填写回复内容</div>
+			  <div class="content-block" style="opacity:0.9;">
+			  	<p><input type="text" style="width:100%" id="offer_value" name="offer_value" placeholder="请填写价格"></p>
+			 	<textarea rows=4 style="width:100%" id="back_content" name="back_content" placeholder="回复内容"></textarea>
+				<p class="buttons-row">
+					<a href="#" class="button " onclick="dealTodo()">保存回复信息</a>
+					<a href="#" class="button close-popup">取消</a>
+				</p>
+			  </div>
+			</div>
+			
+    	</div> 
+    </div>
+    
+   <script type='text/javascript' src='../sui/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../sui/sm.min.js' charset='utf-8'></script>
+	<script type="text/javascript" src="../js/config.js"></script>
+	<script type="text/javascript" src="../js/ccoffice.js"></script>
+	<script type="text/javascript" src="show.js"></script>
+  </body>
+</html>

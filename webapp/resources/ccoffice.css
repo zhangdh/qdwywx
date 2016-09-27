@@ -1,0 +1,76 @@
+body {
+	margin:0;
+	padding:0;
+	width:90%;
+}
+a:link {
+	color: blue;
+	text-decoration: none;
+}               /* 未被访问的链接*/
+a:visited {
+	color: blue;
+}            /* 已被访问过的链接*/ 
+a:hover {
+	color: blue;
+}            /* 鼠标悬浮在上的链接*/
+a:active {
+	color: blue;
+} 
+.query_table{
+	width:100%;
+	height:100%;
+	border-collapse: collapse;
+	border:"0px";
+	cellspacing:"0px";
+	cellpadding:"0px";
+}
+
+.query_table td{
+	/*border:solid 1px #add9c0;*/
+}
+
+.query_label{
+	width:80px;
+	height:20px;
+ 	text-align:center;
+ 	font-family:Microsoft Yahei;
+ 	font-size:12px;
+}
+.query_text{
+	width: 120px; 
+	HEIGHT: 20px; 
+}
+.query_button{
+	 
+}
+.show_table{
+	width:100%;
+	border-collapse: collapse;
+}
+.show_table td{
+	border:solid 1px #add9c0;
+	height:25px;
+}
+.show_table_label{
+	height:20px;
+ 	text-align:center;
+ 	font-family:Microsoft Yahei;
+ 	font-size:12px;
+}
+.show_table_text input{
+	width:100%;
+	height:100%;
+}
+.show_table_text textarea{
+	width:100%;
+}
+
+.show_table_text select{
+	width:100%;
+}
+.show_div_buttom{
+	 text-align:center;
+}
+input{
+	vertical-align:middle;
+}

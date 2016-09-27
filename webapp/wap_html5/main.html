@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1.0">
+    <title>欢迎使用</title>
+    
+    
+    <link rel="stylesheet" href="resources/sm.min.css">
+    <link rel="stylesheet" href="resources/sm-extend.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/wap.css" />
+  </head>
+  <body>
+  	<div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav" style="background-color:#64A2F5">
+                <img src="resources/images/logo.png" style="float:left;height:30px;margin-top:8px;"/>
+                <h1 class="title h1">青岛嘉维速修</h1>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content" data-distance="100" >
+                 <div id ="div_content_head">
+				  	<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					      <div class="swiper-slide"><img style="width:100%;height:150px;" src="resources/images/topimage1.png" alt=""></div>
+					      <div class="swiper-slide"><img style="width:100%;height:150px;" src="resources/images/topimage2.png" alt=""></div>
+					      <div class="swiper-slide"><img style="width:100%;height:150px;" src="resources/images/topimage3.png" alt=""></div>
+					    </div>
+					    
+					</div>
+			  	 </div>
+			  	 <div id = "div_content_middle">
+			  		<div class="c_staticRow">
+	  					<div class="c_item" >  			
+	  					    <a onclick=sys_goUrl('dcl/dcl.html')>
+		  					    <div class="c_item_image c_item_image_dcl"></div>
+		  					    <div class="c_item_text">待处理</div>	   
+	  					    </a> 
+	  					</div>
+	  					<div class="c_item c_item_right">
+	  						<a onclick=sys_goUrl('dwx/dwx.html')>
+		  						<div class="c_item_image c_item_image_zzwx"></div>
+		  					    <div class="c_item_text">已预约</div>	   
+	  						</a>
+	  				</div>
+	  					<div class="c_item c_item_right" >
+	  						<a onclick=sys_goUrl('db/db.html')>
+		  						<div class="c_item_image c_item_image_building"></div>
+		  					    <div class="c_item_text">督办中</div>
+	  					    </a>
+	  					</div>
+	  				</div>
+	  				<div class="c_staticRow">
+
+	  					<div class="c_item c_item_right" >
+	  						<a onclick=sys_goUrl('ywc/ywc.html')>
+		  						<div class="c_item_image c_item_image_lsjl"></div>
+		  					    <div class="c_item_text">完成工单</div>
+	  						</a>
+	  					</div>
+	  					<div class="c_item c_item_right" >
+	  						<a onclick=sys_goUrl('tj/tj.html')>
+		  						<div class="c_item_image c_item_image_extend"></div>
+		  					    <div class="c_item_text">接单统计</div>  						
+	  						</a>
+	  					</div>
+	  					<div class="c_item c_item_right" >
+	  						<a onclick=sys_goUrl('help/help.html')>
+		  						<div class="c_item_image c_item_image_help"></div>
+		  					    <div class="c_item_text">使用帮助</div>
+	                        </a>
+	  					</div>
+	  				</div>
+			  	</div>
+			</div>
+			<nav class="bar bar-tab">
+			  <a class="tab-item external active" href="#">
+			    <span class="icon icon-home"></span>
+			    <span class="tab-label">主页</span>
+			  </a>
+			  <a class="tab-item external" href="#" onclick="sys_goUrl('me/me.html')">
+			    <span class="icon icon-me"></span>
+			    <span class="tab-label">我的</span>
+			  </a>
+			  <a class="tab-item external" href="#" onclick="logout('login.html')">
+			    <span class="icon icon-remove"></span>
+			    <span class="tab-label">退出</span>
+			  </a>
+			</nav>
+         </div>
+             
+    </div>
+    
+	<script type='text/javascript' src='sui/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='sui/sm.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='sui/sm-extend.min.js' charset='utf-8'></script>
+	
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/ccoffice.js"></script>
+	<script>
+		$(function(){
+			$(".swiper-container").swiper({
+				 autoplay:4000,
+				 speed: 1000
+			});
+		});
+		
+	</script>
+    
+  </body>
+</html>

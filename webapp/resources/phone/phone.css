@@ -1,0 +1,268 @@
+input.BtnConnect{
+  color:000000;
+  font-size: 15px;
+  background: url(signin.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.JX{
+  color:000000;
+  font-size: 15px;
+  background: url(idle.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.JX1{
+  color:000000;
+  font-size: 15px;
+  background: url(idle1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.BC{
+  color:000000;
+  font-size: 15px;
+  background: url(hold.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BC1{
+  color:000000;
+  font-size: 15px;
+  background: url(hold1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.QBC{
+  color:000000;
+  font-size: 15px;
+  background: url(hold.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.QBC1{
+  color:000000;
+  font-size: 15px;
+  background: url(hold2.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.JJ{
+  color:000000;
+  font-size: 15px;
+  background: url(refuse.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.JJ{
+  color:000000;
+  font-size: 15px;
+  background: url(refuse.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.JJ1{
+  color:000000;
+  font-size: 15px;
+  background: url(refuse1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.ZJ{
+  color:000000;
+  font-size: 15px;
+  background: url(trance.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.ZJ1{
+  color:000000;
+  font-size: 15px;
+  background: url(trance1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.JT{
+  color:000000;
+  font-size: 15px;
+  background: url(answer.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.JT1{
+  color:000000;
+  font-size: 15px;
+  background: url(answer1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.BtnMeet{
+  color:000000;
+  font-size: 15px;
+  background: url(meet.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.BtnMeet1{
+  color:000000;
+  font-size: 15px;
+  background: url(meet1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.ZWX{
+  color:000000;
+  font-size: 15px;
+  background: url(trance.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.ZWX1{
+  color:000000;
+  font-size: 15px;
+  background: url(trance1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.BtnIvr{
+  color:000000;
+  font-size: 15px;
+  background: url(ivr.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnIvr1{
+  color:000000;
+  font-size: 15px;
+  background: url(ivr1.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.WH{
+  color:000000;
+  font-size: 15px;
+  background: url(call.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.WH1{
+  color:000000;
+  font-size: 15px;
+  background: url(call1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.add{
+  color:000000;
+  font-size: 15px;
+  background: url(call1.png) no-repeat;
+  width:80px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}

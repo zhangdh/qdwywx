@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1.0">
+    <title>待处理</title>   
+    <link rel="stylesheet" href="../resources/sm.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/wap.css" />
+  	<title></title>
+  </head>
+  <body>
+	 <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav" style="background-color:#64A2F5">
+                <a class="icon icon-left pull-left pull-self"   onclick="sys_goUrl('../main.html')"></a>
+                <a class="icon icon-refresh pull-right pull-self"  onclick="queryTodo(1)"></a>
+                <h1 class="title h1" >待处理(未预约)</h1>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content-self content"  id="div_grid_page">
+            	<div class="list-block" style="margin:0 0;">
+            		<input id="page" value="1" hidden></input>
+            		<input id="total" value="0" hidden></input>
+                	<div class="list-block" id="div_grid">
+	             
+	          		</div>
+	          	</div>
+	          	<!-- 加载提示符 -->
+		        <div class="infinite-scroll-preloader">
+		        	<div class="preloader"></div>
+		        </div>
+		        <div style="height:50px"></div>
+            </div>
+           
+            <div id="div_grid_templet" style="display:none">	  
+		  	 	<div class="dcl_item" >
+				<div class="blank8"></div>
+					<div class="c_item_header">
+						<img src="../resources/icons/15.png" />&nbsp;&nbsp;
+						<span>编号：{service_number}({supervision_name})</span>
+					</div>
+					<div class="c_item_content">
+					<table>
+					 <tr><td><img src="../resources/icons/4.png" /></td><td width="75px">报修时间：</td><td>{create_time}</td><td></td></tr>
+					 <tr><td width="30px"><img src="../resources/icons/10.png" /></td><td>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</td><td>{caller_name}</td><td width="30px"></td></tr>
+					 <tr><td><img src="../resources/icons/5.png" /></td><td>联系电话：</td><td>{contact_num}</td><td><span  onclick="dial('{contact_num}')"><img src="../resources/icons/phone.png" /></span</td></tr>
+					 <tr><td valign="top"><img src="../resources/icons/3.png"  /></td><td valign="top">报修地址：</td><td>{repair_address} </td><td><span  onclick=""><img src="../resources/icons/navi.png" /></span></td></tr>
+					 <tr><td valign="top"><img src="../resources/icons/2.png" /></td><td valign="top">报修内容：</td><td>{service_content}</td><td></td></tr>		
+					</table>
+					</div>
+					<div class="c_item_footer">
+						 <p class="buttons-row">
+						 	<a href="#" onclick="show('{guid}')" class="button">详情</a>
+						 	<a href="#" onclick="back('{guid}')" class="button popup-back">回退</a>
+						 	<a href="#" onclick="reservation('{guid}')" class="button popup-reservation">预约</a>
+						 	<a href="#" onclick="sign('{guid}','{sign_guid}','{sign_status}')" class="button">上门服务</a>
+						 </p>
+					</div>  		 
+			  </div>
+		    </div>
+		   
+		    <div class="popup popup-back popup-self" style="height:250px;">
+		      <div class="popup_header">是否确认回退?</div>
+			  <div class="content-block" style="opacity:0.9;">
+					<textarea rows=3 id="back_content" name="back_content" style="width:100%"  placeholder="请填写回退原因"></textarea>
+					<p class="buttons-row">
+						<a href="#" class="button " onclick="saveBack()">确认回退</a>
+						<a href="#" class="button close-popup">取消</a>
+					</p>
+			  </div>
+			</div>
+			
+   			<div class="popup popup-sign popup-self">
+		      <div class="popup_header" id="sign_header">签到/签退</div>
+			  <div  style="opacity:0.9;">
+			  	<div style="top:20px;">
+			  		<table style="width:100%;">
+			  			<tr style="height:10px;"></tr>
+			  			<tr>
+			  				<td style="width:30%;text-align:center;">当前时间：</td>
+			  				<td style="width:50%;text-align:left;" ><span id="curtime"></span><br/></td>
+			  				<td style="width:20%;text-align:left;"><a href="#" class="button " onclick="getAddr();">获取</a></td>
+			  			</tr>
+			  			<tr>
+			  				<td style="width:30%;text-align:center;">当前位置：</td>
+			  				<td style="width:70%;text-align:left;" colspan=2><span id="points"></span><br/></td>
+			  				
+			  			</tr>
+			  			<tr>
+			  				<td style="text-align:center;" colspan=3 ><span id="address"></span><br/></td>
+			  			</tr>
+			  		</table>
+			  	</div>
+				<p class="buttons-row">
+					<a href="#" class="button " onclick="signIn()">签到</a>
+					<a href="#" class="button " onclick="signOut()">签退</a>
+					<a href="#" class="button close-popup">关闭</a>
+				</p>
+				<table style="width:100%" id="sign_list">
+					 
+				</table>
+			  </div>
+			</div>
+			<div  style="display:none">
+				<table id="sign_template">
+					<tr style="width:100%">
+						<td style="width:20%;align:right">签到：</td>
+				  		<td style="width:30%;">{sign_start}</td>
+				  		<td style="width:20%;align:right">签退：</td>
+				  		<td style="width:30%;">{sign_end}</td>
+					</tr>
+				</table>
+			</div>
+			
+   			<div class="popup popup-reservation popup-self"  style="height:220px">
+		      <div class="popup_header">预约信息</div>
+			  <div class="content-block" style="opacity:0.9;">
+			 	<input type="text" id='reservation' style="width:100%"  placeholder="请选择预约时间"/>
+				<p class="buttons-row">
+					<a href="#" class="button " onclick="saveReservation()">保存预约信息</a>
+					<a href="#" class="button close-popup">关闭</a>
+				</p>
+				
+			  </div>
+			</div>
+			
+			<nav class="bar bar-tab">
+			  <a class="tab-item external" href="#" onclick="sys_goUrl('../main.html')">
+			    <span class="icon icon-home"></span>
+			    <span class="tab-label">主页</span>
+			  </a>
+			  <a class="tab-item external" href="#" onclick="sys_goUrl('../me/me.html')">
+			    <span class="icon icon-me"></span>
+			    <span class="tab-label">我的</span>
+			  </a>
+			  <a class="tab-item external" href="#" onclick="logout('../login.html')">
+			    <span class="icon icon-remove"></span>
+			    <span class="tab-label">退出</span>
+			  </a>
+			</nav>	
+        </div>
+    </div>
+    
+    <script type='text/javascript' src='../sui/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../sui/sm.min.js' charset='utf-8'></script>
+	<script type="text/javascript" src="../js/config.js"></script>
+	<script type="text/javascript" src="../js/ccoffice.js"></script>
+	<script type="text/javascript" src="dcl.js"></script>
+	
+  </body>
+</html>

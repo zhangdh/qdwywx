@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+body{
+ margin:0px;
+ padding:0px;
+ overflow:hidden;
+}
+html { overflow: hidden; }  
+#map{width:100%; height:100%; overflow: hidden;position:relative;}
+#map_btn{position:absolute;top:550px;right:10px;z-index:100;}
+#map_btn input{background:#0092DC;color:#fff;}

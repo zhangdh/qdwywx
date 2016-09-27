@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1.0">
+    <title>待处理</title>
+    
+    <link rel="stylesheet" href="../resources/sm.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/wap.css" />
+  	<style>
+  		body{
+  			color:#C0C0C0;
+  			font-size:18px;
+  		}
+  	</style>
+  </head>
+  <body>
+	 <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav" style="background-color:#64A2F5">
+                <a class="icon icon-left pull-left" onclick="sys_goUrl('../main.html')"></a>
+                <a class="icon icon-refresh pull-right" onclick="queryTodo(1)"></a>
+                <h1 class="title" style="font-size:24px; color:#FFF;font-weight:bold;">我的</h1>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content-self content"  id="div_show">
+            	<div class="list-block">
+            		<ul>
+            			<li class="item-content">
+	            			<table style="left:5px;width:100% "   >
+	            				<tr>
+	            					<td rowspan = 2 style="height:80px;width:80px;">
+	            						<img src="../resources/images/worker.jpg">
+	            					</td>
+	            					<td style="vertical-align:bottom;color:#000000;font-size:20px" id="name">
+	            						
+	            					</td>
+	            				</tr>
+	            				<tr>
+	            					<td style="vertical-align:top;color:#C0C0C0;font-size:16px" id="station"></td>
+	            				</tr>
+	            			</table>
+            			<li>
+            		</ul>
+            	</div>
+            	<div class="list-block">
+				    <ul>
+				      <li class="item-content">
+				        <div class="item-inner">
+				          <div class="item-title">当前版本</div>
+				          <div class="item-after" id="verison"></div>
+				        </div>
+				      </li>
+				      <li class="item-content item-link">
+				        <div class="item-inner" onclick="openPassword()">
+				          <div class="item-title">修改密码</div>
+				        </div>
+				      </li>
+				      <li class="item-content item-link">
+				        <div class="item-inner" onclick="openInfo()">
+				          <div class="item-title">信息维护</div>
+				        </div>
+				      </li>
+				      <li class="item-content item-link">
+				        <div class="item-inner" onclick="openAbout()">
+				          <div class="item-title">关于</div>
+				        </div>
+				      </li>
+				      <li class="item-content item-link">
+				        <div class="item-inner" onclick="openFeedback()">
+				          <div class="item-title">意见反馈</div>
+				        </div>
+				      </li>
+				    </ul>
+				</div>
+				<div class="list-block">
+            		<ul>
+            			 <div class="col-100"><a href="#" class="button button-big button-fill" onclick="logout('../login.html');">退出</a></div>
+            		</ul>
+            	</div>
+            </div>
+            
+            <nav class="bar bar-tab">
+			  <a class="tab-item external" href="#" onclick="sys_goUrl('../main.html')">
+			    <span class="icon icon-home"></span>
+			    <span class="tab-label">主页</span>
+			  </a>
+			  <a class="tab-item external active" href="#" onclick="sys_goUrl('../me/me.html')">
+			    <span class="icon icon-me"></span>
+			    <span class="tab-label">我的</span>
+			  </a>
+			  <a class="tab-item external" href="#" onclick="logout('../login.html')">
+			    <span class="icon icon-remove"></span>
+			    <span class="tab-label">退出</span>
+			  </a>
+			</nav>	
+			
+			
+			<div class="popup popup-password popup-self" style="height:250px;">
+		      <div class="popup_header">修改密码</div>
+			  <div class="content-block" style="opacity:0.9;">
+			  <input type="password" id='new_password'  style="width:100%" placeholder="请输入新密码"/><br/><br/>
+			  <input type="password" id='new_password2'  style="width:100%" placeholder="请再一次输入新密码"/>
+				<p class="buttons-row">
+					<a href="#" class="button " onclick="savePassword()">保存</a>
+					<a href="#" class="button close-popup">取消</a>
+				</p>
+			  </div>
+			</div>
+			
+			<div class="popup popup-info popup-self" style="height:300px;">
+		      <div class="popup_header">信息维护</div>
+			  <div class="content-block" style="opacity:0.9;">
+			  <input type="text" id='name'  style="width:100%" placeholder="请输入姓名"/><br/><br/>
+			  <input type="text" id='telephone'  style="width:100%" placeholder="联系电话"/><br/><br/>
+			  <input type="text" id='lxdz'  style="width:100%" placeholder="请输入联系地址"/>
+				<p class="buttons-row">
+					<a href="#" class="button " onclick="saveInfo()">保存</a>
+					<a href="#" class="button close-popup">取消</a>
+				</p>
+			  </div>
+			</div>
+			
+			<div class="popup popup-about popup-self" style="height:300px;">
+		      <div class="popup_header">关于</div>
+			  <div class="content-block" style="opacity:0.9;">
+			  	关于内容 
+			  <p class="buttons-row">
+					<a href="#" class="button close-popup">取消</a>
+			  </p>
+			  </div>
+			</div>
+			
+        </div>
+    </div>
+    <script type='text/javascript' src='../sui/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../sui/sm.min.js' charset='utf-8'></script>
+	<script type="text/javascript" src="../js/config.js"></script>
+	<script type="text/javascript" src="../js/ccoffice.js"></script>
+	<script type="text/javascript" src="me.js"></script>
+	
+  </body>
+</html>

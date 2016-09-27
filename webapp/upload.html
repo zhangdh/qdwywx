@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1.0">
+    <title>上传</title>
+	<script>
+	</script>
+  </head>
+  <body>
+  	<form method="POST" id="form_upload" name="form_upload" enctype="multipart/form-data" action="/qdwy/cc/app/gdgl.do?method=uploadImages">
+  	 	<input type=hidden name="upload_type" value="scene">
+  	 	<input type=hidden name="service_id" value="2016080821031944498112">
+  	 	<input type="file" runat="server" name="file" />
+  	 	<input  type=submit value="导入"  >
+  	</form>
+ 
+  </body>
+</html>

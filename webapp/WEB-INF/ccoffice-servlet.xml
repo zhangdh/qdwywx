@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		classpath:spring-beans-4.0.xsd
+		http://www.springframework.org/schema/tx 
+		classpath:spring-tx-4.0.xsd
+		http://www.springframework.org/schema/context 
+		classpath:spring-context-4.0.xsd">
+	<context:component-scan base-package="com.ccoffice" />
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	<bean id="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="order" value="0"></property>
+	</bean>
+	<!-- 
+	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">   
+    	<property name="order" value="1"></property>
+    	<property name="suffix" value=".vm"></property>
+    	<property name="contentType" value="text/html;charset=UTF-8"></property>
+	</bean>
+	 -->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2"></property>
+		<property name="prefix" value="/" ></property>
+	</bean>
+	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+	</bean>
+	<!--<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">   
+    	<property name="resourceLoaderPath">   
+      		<value>WEB-INF/velocity/</value>   
+    	</property>
+    	<property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">utf-8</prop>
+                <prop key="output.encoding">utf-8</prop>
+            </props>
+        </property>   
+	</bean>
+	--> 
+	<bean id="Db" class="com.ccoffice.util.db.Db">
+	   <property name="ds" ref = "ds"/>
+	   <property name="dsExt" ref = "dsExt"/>
+       <property name="jdbcTemplate" ref = "jdbcTemplate"/>
+       <property name="jdbcTemplateExt" ref = "jdbcTemplateExt"/>
+    </bean>
+    
+    
+	<bean id="jdbcTemplate" name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="ds"/>
+		  
+	<bean id="jdbcTemplateExt" name="jdbcTemplateExt" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dsExt"/>	  
+		  	
+	<bean id="ds" name="ds" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/myproject?stringtype=unspecified"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="root"/>
+        <!-- 池启动时创建的连接数量 -->
+        <property name="initialSize" value="5"/>
+        <!-- 同一时间可以从池分配的最多连接数量。设置为0时表示无限制。 -->
+        <property name="maxActive" value="30"/>
+        <!-- 池里不会被释放的最多空闲连接数量。设置为0时表示无限制。 -->
+        <property name="maxIdle" value="20"/>
+        <!-- 在不新建连接的条件下，池中保持空闲的最少连接数。 -->
+        <property name="minIdle" value="3"/>
+        <!-- 设置自动回收超时连接 -->  
+        <property name="removeAbandoned" value="true" />
+        <!-- 自动回收超时时间(以秒数为单位) -->  
+        <property name="removeAbandonedTimeout" value="200"/>
+        <!-- 设置在自动回收超时连接的时候打印连接的超时错误  --> 
+        <property name="logAbandoned" value="true"/>
+        <!-- 等待超时以毫秒为单位，在抛出异常之前，池等待连接被回收的最长时间（当没有可用连接时）。设置为-1表示无限等待。  -->  
+        <property name="maxWait" value="100"/>  
+	</bean>
+	
+	<bean id="dsExt" name="dsExt" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/myproject?stringtype=unspecified"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="root"/>
+        <!-- 池启动时创建的连接数量 -->
+        <property name="initialSize" value="5"/>
+        <!-- 同一时间可以从池分配的最多连接数量。设置为0时表示无限制。 -->
+        <property name="maxActive" value="30"/>
+        <!-- 池里不会被释放的最多空闲连接数量。设置为0时表示无限制。 -->
+        <property name="maxIdle" value="20"/>
+        <!-- 在不新建连接的条件下，池中保持空闲的最少连接数。 -->
+        <property name="minIdle" value="3"/>
+        <!-- 设置自动回收超时连接 -->  
+        <property name="removeAbandoned" value="true" />
+        <!-- 自动回收超时时间(以秒数为单位) -->  
+        <property name="removeAbandonedTimeout" value="200"/>
+        <!-- 设置在自动回收超时连接的时候打印连接的超时错误  --> 
+        <property name="logAbandoned" value="true"/>
+        <!-- 等待超时以毫秒为单位，在抛出异常之前，池等待连接被回收的最长时间（当没有可用连接时）。设置为-1表示无限等待。  -->  
+        <property name="maxWait" value="100"/>
+	</bean>
+</beans>

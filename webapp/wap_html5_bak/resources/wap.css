@@ -1,0 +1,208 @@
+@CHARSET "UTF-8";
+*{
+ font-family:'Microsoft YaHei';
+}
+a{
+ cursor:pointer;
+ text-decoration:none;
+}
+.div_header{
+ background:#64A2F5;
+ color:#FFF;
+ height:60px;
+ text-align:center;
+ width:100%;
+ line-height:60px;
+ font-weight:normal;
+ text-shadow:none;
+ font-size:24px;
+ font-weight:bold;
+ vertical-align: middle;
+ position:relative;
+}
+.div_header a.ui-link{
+ font-size:14px;
+ position:absolute;
+ color:#000;
+ left:10px;
+ top:0px;
+}
+.div_logo_text{}
+.maintitle{
+ width:100%;
+ text-align:center;
+ font-size:32px;
+ color:#64A2F5;
+ height:50px;
+ line-height:50px;
+}
+.subtitle{
+ width:100%;
+ text-align:center;
+ font-size:18px;
+ color:#64A2F5;
+ height:30px;
+ line-height:30px;
+}
+#loginButton{
+ background:#64A2F5;
+ color:#FFF;
+ font-size:14px;
+}
+.div_logo{
+ background:url(images/logon.png) center center no-repeat;
+ width:100%;
+ height:150px;
+}
+#div_content_head{
+ height:150px;
+ width:100%;
+ -webkit-background-size: cover;
+ position:relative;
+}
+.c_staticRow{
+	display:-webkit-box;
+	border-bottom:1px solid #DBDBDB;
+	clear:both;
+	
+}
+.c_item{
+	height:120px;
+	-webkit-box-flex:1;
+	text-align:center;
+	padding-top:10px;
+}
+.c_item_right{
+	border-left:1px solid #DBDBDB;
+}
+.c_item_image{
+  width:45px;
+  height:45px;
+ margin:10px auto;
+ 
+}
+.c_item_image_dcl{
+	background:url(images/dcl.png) center center no-repeat;
+
+}
+.c_item_image_zzwx{
+	background:url(images/zzwx.png) no-repeat;
+}
+.c_item_image_lsjl{
+	background:url(images/ywc.png) no-repeat;
+}
+.c_item_image_help{
+	background:url(images/help.png) no-repeat;
+}
+.c_item_image_building{
+	background:url(images/building.png) no-repeat;
+}
+.c_item_image_extend{
+	background:url(images/jdtj.png) no-repeat;
+}
+.c_item_text{
+    text-align:center;
+    color:#000;
+}
+/*----------待处理-start-----------*/
+.dcl_item,.dwx_item{
+ padding-left:10px;
+ padding-right:10px;
+ background:#fff;
+ margin-bottom:20px;
+}
+.dcl_item input,.dwx_item input{
+ width:90px;
+ hight:26px;
+ line-height:26px;
+}
+.dcl_item img,.dwx_item img{
+ height:20px;
+ width:20px;
+ margin-top:5px;
+ margin-left:5px;
+ float:left; 
+}
+.dcl_item .c_item_header,.dwx_item .c_item_header{
+ height:30px;
+ line-height:30px;
+ border-bottom:1px solid #DCDCDC;
+ clear:both;
+}
+.dcl_item .c_item_content,.dwx_item .c_item_content{
+ border-bottom:1px solid #DCDCDC;
+ line-height:30px;
+ height:100%;
+ clear:both;
+}
+.dcl_item .c_item_footer,.dwx_item .c_item_footer{
+ text-align:right;
+ height:50px;
+ line-height:50px;
+ clear:both;
+}
+/*----------待处理-end-----------*/
+/*----------查看详情-start-----------*/
+.dcl_title,.dwx_title{
+ font-size:16px;
+ font-weight:bold;
+ height:30px;
+ line-height:30px;
+ border-bottom:1px solid #DCDCDC;
+}
+.dcl_title span,.dwx_title span{
+ width:5px;
+ height:30px;
+ margin-top:5px;
+ background:#65A3F8;
+ margin-right:10px;
+}
+.show_content{
+ margin:10px;
+ background:#FFF;
+ }
+.show_title{
+ font-weight:200;
+ height:30px;
+ line-height:30px;
+ margin-left:5px;
+}
+.ui-btn{
+ block:none;
+}
+#div_reservation div{
+ float:left;
+ margin:0 5px;
+}
+/*----------查看详情-end-----------*/
+.popup-self{
+	width:90%;
+	left:5%;
+    border: 1px solid #dedede; 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-clip:content-box;
+    top:30px;
+    text-align:center;
+    font-size:16px;
+    color:#C0C0C0;
+}
+.popup_header{
+	background:#64A2F5;
+	height:40px;
+	width：100%;
+ 	color:#FFF;
+ 	text-align:center;
+ 	line-height:40px;
+ 	font-weight:normal;
+ 	text-shadow:none;
+ 	font-size:18px;
+ 	vertical-align: middle;
+ 
+}
+.bar .pull-self{
+  color:#FFF !important;
+}
+.bar-nav ~ .content-self{
+	top:0.5rem;
+}

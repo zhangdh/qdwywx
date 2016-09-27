@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+	#allmap {width: 100%; height:500px; overflow: hidden;}
+	#result {width:100%;font-size:12px;}
+	dl,dt,dd,ul,li{
+		margin:0;
+		padding:0;
+		list-style:none;
+	}
+	p{font-size:12px;}
+	dt{
+		font-size:14px;
+		font-family:"微软雅黑";
+		font-weight:bold;
+		border-bottom:1px dotted #000;
+		padding:5px 0 5px 5px;
+		margin:5px 0;
+	}
+	dd{
+		padding:5px 0 0 5px;
+	}
+	li{
+		line-height:28px;
+	}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CQtzvv0B4S94vbVmeKu3KAKQPxEGGHlo"></script>
+	<!--加载鼠标绘制工具-->
+	<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+	<!--加载检索信息窗口-->
+	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
+	<title>显示多个点</title>
+	
+	<script type="text/javascript">
+		//百度地图API功能
+		var map ;
+		function loaded(){
+			map = new BMap.Map('map');
+		    map.centerAndZoom('青岛', 16);
+		    map.enableScrollWheelZoom();  
+		    loadDb();
+		}
+	    
+	    
+	    var  polylineArr=new Array();	
+	 
+		var markpoints = [new BMap.Point('120.386948','36.071045'),
+						  new BMap.Point('120.396865','36.073408'),
+						  new BMap.Point('120.395643','36.07685'),
+						  new BMap.Point('120.385331','36.073641'),
+						  new BMap.Point('120.38702','36.071045')]
+					
+	function loadDb(){
+	var markerArr = [{name:'点部一',point:'120.389014,36.073164',address:'青岛市政府',id:'qdszf',telephone:'11111111'},
+	                 {name:'点部二',point:'120.39514,36.073496',address:'假日酒店',id:'jrjd',telephone:'22222'},
+					 {name:'点部三',point:'120.386714,36.070549',address:'五四广场',id:'wsgc',telephone:'33333'},
+					 {name:'点部四',point:'120.38348,36.068274',address:'青岛世界贸易中心',id:'myzx',telephone:'444444'}];
+	var wxgArr=[{name:'张三',point:'120.387217,36.071049',address:'青岛市政府',id:'qdszf',telephone:'11111111'},
+				{name:'李四',point:'120.387657,36.070443',address:'青岛市政府',id:'qdszf',telephone:'11111111'},
+				{name:'王五',point:'120.38684,36.070866',address:'青岛市政府',id:'qdszf',telephone:'11111111'},
+				{name:'赵六',point:'120.387226,36.071041',address:'青岛市政府',id:'qdszf',telephone:'11111111'}];
+	for (var i = 0; i < markerArr.length; i++) {
+		var marker = new Array(); 	
+		(function(){  //使用闭包
+			var p0 = markerArr[i].point.split(",")[0]; //  
+			var p1 = markerArr[i].point.split(",")[1];
+			var point = new BMap.Point(p0, p1); 
+			var info= new BMap.InfoWindow(markerArr[i].name + '</br>地址：' + markerArr[i].address+'</br>编号:'+markerArr[i].id+'</br>电话:'+markerArr[i].telephone);
+			var myIcon = new BMap.Icon("resources/map/db.png", new BMap.Size(40,59));
+			marker[i] = new BMap.Marker(point,{icon:myIcon}); 
+			marker[i].addEventListener('mouseover', function(){
+			 this.openInfoWindow(info);
+			});	
+			marker[i].addEventListener('mouseout', function(){
+			 this.closeInfoWindow() ;
+			});	
+			marker[i].addEventListener('click', function(){
+			//显示多边形
+			   polylineArr[i] = new BMap.Polyline(
+                markpoints, {strokeColor:"red", strokeWeight:5, strokeOpacity:0.6});   //创建折线
+	            map.addOverlay(polylineArr[i]);  			//增加折线
+				polylineArr[i].addEventListener('click',function(){
+				    map.removeOverlay(this); 
+				});
+			//显示点部的维修工
+			var  markerWxg = new Array();
+			for (var n = 0; n < wxgArr.length; n++) {
+			 (function(){
+			   	var p0 = wxgArr[n].point.split(",")[0]; //  
+			    var p1 = wxgArr[n].point.split(",")[1];
+			    var point = new BMap.Point(p0, p1); 
+				var info= new BMap.InfoWindow(wxgArr[n].name + '</br>地址：' + wxgArr[n].address+'</br>编号:'+wxgArr[n].id+'</br>电话:'+wxgArr[n].telephone);
+				var myIcon = new BMap.Icon("resources/map/ren.png", new BMap.Size(40,59));
+				markerWxg[i] = new BMap.Marker(point,{icon:myIcon}); 
+				markerWxg[i].addEventListener('mouseover', function(){
+				 this.openInfoWindow(info);
+			    });	
+				map.addOverlay(markerWxg[i]); 
+			 })();
+			   
+			} 
+			
+			});	
+			map.addOverlay(marker[i]); 
+		 })();
+	}
+	}
+    function doGetPosition(){
+	 var key =  document.getElementById('key').value;
+	 var local = new BMap.LocalSearch(map, {
+		renderOptions:{map: map}
+	});
+	local.search(key);
+	}
+	function doReset(){
+	   map.clearOverlays(); 
+	   loadDb();
+	}
+	</script>
+	
+</head>
+<body onload="loaded()">
+	<div id="allmap" style="overflow:hidden;zoom:1;position:relative;">	
+	    <div style="position:absolute;top:20px;left:50%;z-index:9999;height:20px;">
+		<input type="text" name="key" id="key" />
+		<input type="button" value="查找" onclick="doGetPosition()"/>
+		<input type="button" value="重置" onclick="doReset()"/></div>
+		<div id="map" style="height:100%;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;"></div>
+	</div>
+	<div id="result">
+		<input type="button" value="获取绘制的覆盖物个数" onclick="alert(overlays.length)"/>
+		<input type="button" value="清除所有覆盖物" onclick="clearAll()"/>
+		<input type="button" value="画图" onclick="drowMyZone()"/>
+	</div>
+</body>
+</html>
